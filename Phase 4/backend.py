@@ -1,10 +1,10 @@
-from file_handler import FileHandler
-class backend:
+from file_handler import FileHandler 
 
-    # Declaring global arrays to store transactions and accounts for reading and writing to files
-    transactions = []
-    accounts = []
-    def main():
-        FileHandler = FileHandler()
+def main():
 
-        FileHandler.read_file('master_file.txt')
+    # Populate transactions array
+    FileHandler.read_transactions("merged_transactions.txt")
+    #Populate accounts array
+    FileHandler.read_old_bank_account_file("master_file.txt")
+
+main()
