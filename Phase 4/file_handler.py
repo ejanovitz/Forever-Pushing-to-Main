@@ -5,7 +5,6 @@ class FileHandler:
     transactions = []  # Global transactions list
     accounts = []  # Global accounts list
 
-    @staticmethod
     def read_transactions(inpfile):
         """ Reads transactions from the given file and appends them to the transactions list. """
         if not os.path.exists(inpfile):
