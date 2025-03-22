@@ -1,6 +1,8 @@
 import os
 import re
 from read import read_old_bank_accounts
+from write import write_new_current_accounts
+
 # Declare a class to handle file operations
 class FileHandler:
     transactions = []  # Global transactions list
@@ -81,3 +83,26 @@ class FileHandler:
                 f.write(account + '\n')
 
         print('New bank account file written successfully:', newMasterbankAccountFile)
+
+
+    def write_current_accounts_file(accounts, file_path):
+        current_accounts = []
+
+        for account in accounts:
+            parts = account.split('_')
+            if len(parts) != 5:
+                print(f"Skipping invalid account (wrong format): {account}")
+                continue
+            try:
+                current_accounts.append({
+                    'account_number': parts[0].zfill(5),
+                    'name': parts[1].strip().upper()[:20], # turns "        Ethan" to "ETHAN"
+                    'status': parts[2].strip(),
+                    'balance': float(parts[3])  # assumes it's like "00110.00"
+                })
+            except ValueError:
+                print(f"Skipping invalid account (bad balance): {account}")
+                continue
+
+        write_new_current_accounts(current_accounts, file_path)
+        print('New current account file written successfully:', file_path)
