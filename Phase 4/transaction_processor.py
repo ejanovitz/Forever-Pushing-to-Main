@@ -5,13 +5,13 @@ class TransactionProcessor:
         self.file = None
     
     # This function calculates the total cost of transactions and returns a dict.
-    def daily_cost_per_plan(self, transaction_file):
+    def daily_cost_per_plan( transaction_file):
         # First, we need to open the file
-        self.file = transaction_file
+        file = transaction_file
         transaction_dict = {'SP': 0.00, 'NP': 0.00}
 
         # Now, we have to read this file in order to do caluclations
-        with open(self.file, 'r') as file:
+        with open(file, 'r') as file:
             # In order to calculate, we first reead every line
             for line in file:
                 # Then, we get rid of potential white spaces
