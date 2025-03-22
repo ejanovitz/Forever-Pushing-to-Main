@@ -62,13 +62,16 @@ class FileHandler:
             formatted_account = FileHandler.format_account(account)
             if not formatted_account or not FileHandler.validate_account(formatted_account):
                 print(f'ERROR: Invalid account format: {account}')
-                continue  # Skip invalid ones instead of returning early
+                # Skip invalid ones instead of returning early
+                continue
 
             formatted_accounts.append(formatted_account)
 
         # Sort by bank account number (first 5 digits)
         def get_account_number(account_line):
-            return int(account_line[:5])  # No need to split by underscores
+            # No need to split by underscores
+            # 0-5 is account numbers
+            return int(account_line[:5])
 
         # Sort the accounts by account number only
         formatted_accounts.sort(key=get_account_number)
