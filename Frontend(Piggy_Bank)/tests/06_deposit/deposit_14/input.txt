@@ -1,0 +1,11 @@
+login
+standard
+Andrew
+deposit
+23456
+100
+withdrawal
+23456
+350
+logout
+

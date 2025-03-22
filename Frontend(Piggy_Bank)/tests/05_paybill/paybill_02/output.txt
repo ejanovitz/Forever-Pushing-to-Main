@@ -1,0 +1,17 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter a transaction: 
+Please type in the account holder's name: 
+Please type in their account number: 
+Sorry, that account has been deactivated or invalid. Please try again.
+Please enter a transaction: 
+Please type in the account holder's name: 
+Please type in their account number: 
+Please type in the two character company code that they want to pay to: 
+Please type in the amount you want to use for this transaction:
+Do you want to proceed? Y/n: 
+Payment sent! Remaining balance: $99499.36
+
+Please enter a transaction: 
+See you next time!

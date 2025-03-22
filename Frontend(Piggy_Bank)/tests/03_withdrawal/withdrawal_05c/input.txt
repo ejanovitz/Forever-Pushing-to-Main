@@ -1,0 +1,7 @@
+login
+standard
+Billy
+withdrawal
+02468
+logout
+

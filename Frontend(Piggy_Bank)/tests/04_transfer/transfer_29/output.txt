@@ -1,0 +1,24 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Bob
+== Accounts ==
+67890 A $55555.00
+Please enter a transaction: 
+Enter the source account number: 
+Enter the destination account number: 
+Please type in the amount you want to use for this transaction:  
+Do you want to proceed? (Y/n): 
+Transferred $700.00 from account 67890 to account 23456.
+
+Please enter a transaction:
+Enter the source account number: 
+Enter the destination account number: 
+Please type in the amount you want to use for this transaction: 
+Error: Invalid amount entered
+Do you want to proceed? (Y/n): 
+Error during transfer: '<' not supported between instances of 'float' and 'NoneType'
+Transfer failed. Please check the account numbers and balances.
+Please enter a transaction:
+See you next time!

@@ -1,0 +1,12 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter a transaction: 
+Enter the source account number: 
+Enter the destination account number: 
+Error: Invalid account number format
+Error: Source account not found.
+Please enter a transaction: 
+Error: Invalid transaction
+Please enter a transaction: 
+See you next time!

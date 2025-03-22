@@ -1,0 +1,8 @@
+login
+admin
+deposit
+Andrew
+23456
+100
+logout
+

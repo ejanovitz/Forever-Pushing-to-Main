@@ -1,0 +1,18 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Andrew
+== Accounts ==
+23456 A $300.00
+65432 A $7000.00
+Please enter a transaction: 
+Which account number will be withdrawn from: 
+How much will be withdrawn: 
+$300.00 withdrawn from account 65432, balance: $6700.00
+Please enter a transaction: 
+Which account number will be withdrawn from: 
+How much will be withdrawn: 
+Error: Withdrawal would exceed $500.00 session limit
+Please enter a transaction: 
+See you next time!

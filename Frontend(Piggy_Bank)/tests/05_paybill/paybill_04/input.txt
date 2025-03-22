@@ -1,0 +1,8 @@
+login
+standard
+Firstname Lastname
+paybill
+12345
+JO
+logout
+

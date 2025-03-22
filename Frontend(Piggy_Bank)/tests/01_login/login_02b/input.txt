@@ -1,0 +1,8 @@
+login
+standard
+transaction
+login
+standard
+Firstname Lastname
+logout
+

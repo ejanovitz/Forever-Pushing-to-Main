@@ -1,0 +1,15 @@
+login
+standard
+Broke Boy
+paybill
+22222
+EC
+500.00
+Y
+paybill
+22222
+EC
+400.00
+Y
+logout
+

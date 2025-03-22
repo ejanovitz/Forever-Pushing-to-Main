@@ -1,0 +1,9 @@
+login
+admin
+delete
+Andrew
+23456
+delete
+Andrew
+23456
+logout

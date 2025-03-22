@@ -1,0 +1,6 @@
+login
+admin
+transfer
+Andrew
+67890
+logout

@@ -1,0 +1,15 @@
+login
+standard
+Bob
+transfer
+67890
+23456
+700.00
+Y
+transfer
+67890
+23456
+300.00
+Y
+logout
+logout

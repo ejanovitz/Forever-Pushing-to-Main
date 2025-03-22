@@ -1,0 +1,8 @@
+login
+standard
+Andrew
+withdrawal
+23456
+food
+logout
+

@@ -1,0 +1,7 @@
+Welcome to the Big Bank!
+Please enter a transaction:
+Are you a [standard] or [admin] user:
+Please enter a transaction:
+Please enter the account holder's name:
+Error: Account name does not exist
+Please enter a transaction:

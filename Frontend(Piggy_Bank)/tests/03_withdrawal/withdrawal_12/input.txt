@@ -1,0 +1,8 @@
+login
+standard
+Andrew
+withdrawal
+65432
+500
+logout
+

@@ -1,0 +1,10 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter a transaction: 
+What account holder will be deposited to: 
+Which account number will be deposited to: 
+How much will be deposited: 
+$100.00 deposited to account 23456, balance: $400.00, usable: $300.00
+Please enter a transaction: 
+See you next time!

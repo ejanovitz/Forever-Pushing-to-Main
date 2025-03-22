@@ -1,0 +1,7 @@
+login
+standard
+Andrew
+transfer
+23456
+fdsjahfkdsaj
+logout

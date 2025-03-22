@@ -1,0 +1,8 @@
+login
+standard
+
+login
+standard
+Firstname Lastname
+logout
+

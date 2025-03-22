@@ -1,0 +1,5 @@
+Welcome to the Big Bank!
+Please enter a transaction:
+Are you a [standard] or [admin] user:
+Please enter a transaction:
+See you next time!

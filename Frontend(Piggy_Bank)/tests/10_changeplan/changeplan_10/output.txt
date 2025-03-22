@@ -1,0 +1,13 @@
+Welcome to the Big Bank!
+Please enter a transaction:
+Are you a [standard] or [admin] user:
+Please enter a transaction:
+Please enter the account holder's name:
+Please enter the account number:
+Andrew's plan for account 23456 has been changed from [Non-Student] to [Student].
+Please enter a transaction:
+Please enter the account holder's name:
+Please enter the account number:
+Andrew's plan for account 23456 has been changed from [Student] to [Non-Student].
+Please enter a transaction:
+See you next time!

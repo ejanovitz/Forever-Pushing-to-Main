@@ -1,0 +1,11 @@
+login
+standard
+Andrew
+withdrawal
+65432
+300
+withdrawal
+65432
+300
+logout
+
