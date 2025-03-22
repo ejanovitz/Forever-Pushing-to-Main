@@ -1,15 +1,17 @@
-01 John Doe              00023 00000500 00
-02 Alice Smith           00045 00000250 00
-03 Bob Anderson          00089 00000120 00
-04 Charlie Brown         00110 00001000 SP
-05 Dave Clark            00125 00000000 NP
-06 Eve Johnson           00150 00000000 00
-07 Frank Williams        00200 00000000 SP
-08 Grace Miller          00235 00000000 00 
-04 Samantha Jones        00012 00002000 00 
-01 Mark Taylor           00035 00000750 NP 
-02 Charlie Brown         00078 00000300 SP 
-03 Oscar Edwards         00123 00000550 00
-05 Paul Roberts          00175 00000000 00 
-06 Quinn White           00222 00000000 NP 
-00                       00000 00000000 00 
+01 John Doe            00023 00005.00   
+02 Alice Smith         00045 00002.50   
+03 Bob Anderson        00089 00001.20   
+04 Charlie Brown       00110 00010.00 SP
+05 Dave Clark          00125 00000.00 NP
+06 Eve Johnson         00150 00000.00   
+07 Frank Williams      00200 00000.00 SP
+08 Grace Miller        00235 00000.00   
+04 Samantha Jones      00012 00020.00   
+01 Mark Taylor         00035 00007.50 NP
+02 Charlie Brown       00078 00003.00 SP
+03 Oscar Edwards       00123 00005.50   
+05 Paul Roberts        00175 00000.00   
+06 Quinn White         00222 00000.00 NP
+01 Firstname Lastname  12345 00100.00  
+03 Firstname Lastname  12345 01500.00 EC
+04 Firstname Lastname  12345 00500.00  
