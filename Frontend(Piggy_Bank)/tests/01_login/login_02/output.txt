@@ -1,0 +1,13 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Error: Expected 'standard' or 'admin'
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user:
+Please enter your username: 
+Welcome Firstname Lastname
+== Accounts ==
+12345 A $99999.99
+Please enter a transaction: 
+See you next time!

@@ -1,0 +1,7 @@
+login
+standard
+Andrew
+transfer
+67890
+logout
+logout

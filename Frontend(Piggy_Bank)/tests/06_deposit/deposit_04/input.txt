@@ -1,0 +1,7 @@
+login
+standard
+Andrew
+deposit
+66666
+logout
+

@@ -1,0 +1,28 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Broke Boy
+== Accounts ==
+22222 A $450.00
+Please enter a transaction: 
+Please type in your account number:
+Please type in the two character company code that you want to pay to: 
+Please type in the amount you want to use for this transaction:
+Do you want to proceed? Y/n:
+Error: Action would use more money than there is in the account
+Welcome Broke Boy
+== Accounts ==
+22222 A $450.00
+Please enter a transaction: 
+Please type in your account number:
+Please type in the two character company code that you want to pay to:
+Please type in the amount you want to use for this transaction:
+Do you want to proceed? Y/n:
+Payment sent! Remaining balance: $50.00
+
+Welcome Broke Boy
+== Accounts ==
+22222 A $50.00
+Please enter a transaction: 
+See you next time!

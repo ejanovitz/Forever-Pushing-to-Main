@@ -1,0 +1,5 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Error: Invalid transaction
+Welcome to the Big Bank!
+Please enter a transaction: 

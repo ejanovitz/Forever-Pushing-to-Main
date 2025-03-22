@@ -1,0 +1,13 @@
+login
+admin
+paybill
+Steve Steve
+78901
+paybill
+Firstname Lastname
+12345
+EC
+500.63
+Y
+logout
+

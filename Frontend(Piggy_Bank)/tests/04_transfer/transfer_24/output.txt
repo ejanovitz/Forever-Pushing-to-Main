@@ -1,0 +1,12 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter a transaction: 
+Enter the source account number: 
+Enter the destination account number:
+Please type in the amount you want to use for this transaction: 
+Do you want to proceed? (Y/n): 
+Error: Insufficient funds in the source account.
+Transfer failed. Please check the account numbers and balances.
+Please enter a transaction: 
+See you next time!

@@ -1,0 +1,17 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Andrew
+== Accounts ==
+23456 A $300.00
+65432 A $7000.00
+Please enter a transaction: 
+Enter the source account number: 
+Enter the destination account number: 
+Please type in the amount you want to use for this transaction: 
+Error: Invalid amount entered
+Do you want to proceed? (Y/n): 
+Transfer canceled.
+Please enter a transaction: 
+See you next time!

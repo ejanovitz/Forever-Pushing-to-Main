@@ -1,0 +1,14 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Andrew
+== Accounts ==
+23456 A $300.00
+65432 A $7000.00
+Please enter a transaction: 
+Which account number will be deposited to: 
+How much will be deposited: 
+$99699.99 deposited to account 23456, balance: $99999.99, usable: $300.00
+Please enter a transaction: 
+See you next time!

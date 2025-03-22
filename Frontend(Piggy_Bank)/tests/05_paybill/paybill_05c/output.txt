@@ -1,0 +1,19 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Firstname Lastname
+== Accounts ==
+12345 A $99999.99
+Please enter a transaction: 
+Please type in your account number: 
+Please type in the two character company code that you want to pay to: 
+Please type in the amount you want to use for this transaction:
+Do you want to proceed? Y/n: 
+Payment sent! Remaining balance: $97999.99
+
+Welcome Firstname Lastname
+== Accounts ==
+12345 A $97999.99
+Please enter a transaction: 
+See you next time!

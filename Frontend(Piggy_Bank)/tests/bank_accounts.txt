@@ -1,0 +1,10 @@
+23456 Andrew               A 00300.00
+65432 Andrew               A 07000.00
+67890 Bob                  A 55555.00
+02468 Billy                D 07823.54
+00002 Billy                A 02345.89
+12345 Firstname Lastname   A 99999.99
+78901 Steve Steve          D 00000.00
+22222 Broke Boy            A 00450.00
+00000 END_OF_FILE          A 00000.00
+

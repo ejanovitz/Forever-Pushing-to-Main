@@ -1,0 +1,8 @@
+login
+standard
+Andrew
+deposit
+23456
+food
+logout
+

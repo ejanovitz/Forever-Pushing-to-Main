@@ -1,0 +1,10 @@
+login
+standard
+Firstname Lastname
+paybill
+12345
+EC
+0.01
+Y
+logout
+

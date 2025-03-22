@@ -1,0 +1,8 @@
+login
+admin
+transfer
+23456
+67890
+300.01
+Y
+logout

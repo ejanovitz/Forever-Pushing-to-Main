@@ -1,0 +1,8 @@
+login
+admin
+withdrawal
+Andrew
+65432
+100
+logout
+

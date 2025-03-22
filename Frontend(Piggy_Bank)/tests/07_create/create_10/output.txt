@@ -1,0 +1,9 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter a transaction: 
+What is the account holders name: 
+What is the initial balance: 
+Error: Invalid initial balance
+Please enter a transaction: 
+See you next time!

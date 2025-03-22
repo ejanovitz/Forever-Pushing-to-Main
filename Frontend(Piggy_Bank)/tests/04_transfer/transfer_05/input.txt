@@ -1,0 +1,6 @@
+login
+admin
+transfer
+fjaifjoiasf
+logout
+logout

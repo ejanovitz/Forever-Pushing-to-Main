@@ -1,0 +1,10 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter a transaction: 
+What account holder will be withdrawn from: 
+Which account number will be withdrawn from: 
+How much will be withdrawn: 
+$100.00 withdrawn from account 65432, balance: $6900.00
+Please enter a transaction: 
+See you next time!

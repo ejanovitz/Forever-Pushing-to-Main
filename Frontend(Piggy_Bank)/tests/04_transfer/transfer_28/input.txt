@@ -1,0 +1,8 @@
+login
+admin
+transfer
+67890
+23456
+1000.00
+Y
+logout

@@ -1,0 +1,8 @@
+login
+standard
+Andrew
+withdrawal
+23456
+-100
+logout
+

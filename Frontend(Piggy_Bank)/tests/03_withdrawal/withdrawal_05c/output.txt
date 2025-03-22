@@ -1,0 +1,13 @@
+Welcome to the Big Bank!
+Please enter a transaction: 
+Are you a [standard] or [admin] user: 
+Please enter your username: 
+Welcome Billy
+== Accounts ==
+02468 D $7823.54
+00002 A $2345.89
+Please enter a transaction: 
+Which account number will be withdrawn from: 
+Error: Account is disabled
+Please enter a transaction: 
+See you next time!

@@ -1,0 +1,7 @@
+login
+\n
+login
+standard
+Firstname Lastname
+logout
+

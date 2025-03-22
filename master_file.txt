@@ -1,1 +1,1 @@
-12345 Firstname Lastname   A 99999.99 9999
+12345 Firstname Lastname   A 99999.99 9999 SP
