@@ -2,16 +2,18 @@ import os
 import re
 from read import read_old_bank_accounts
 from write import write_new_current_accounts
+from logger import Logger
 
 # Declare a class to handle file operations
 class FileHandler:
     transactions = []  # Global transactions list
     accounts = []  # Global accounts list
+    logger = Logger()
 
     def read_transactions(inpfile):
         """ Reads transactions from the given file and appends them to the transactions list. """
         if not os.path.exists(inpfile):
-            print(f"Error: {inpfile} not found.")
+            FileHandler.logger.log_error("Read Error", "File not found", f"{inpfile}")
             return
 
         with open(inpfile, 'r') as file:
@@ -59,14 +61,23 @@ class FileHandler:
 
     def write_new_bank_account_file(accounts, newMasterbankAccountFile):
         formatted_accounts = []
+        account_nums = set()
 
         for account in accounts:
             formatted_account = FileHandler.format_account(account)
             if not formatted_account or not FileHandler.validate_account(formatted_account):
-                print(f'ERROR: Invalid account format: {account}')
+                FileHandler.logger.log_error("Write Error", f"Invalid account format: {account}", newMasterbankAccountFile)
                 # Skip invalid ones instead of returning early
                 continue
+            print(f"Formatted account: {formatted_account}")
+            account_num = formatted_account[:5]
 
+            #Check for duplicate account numbers
+            if account_num in account_nums:
+                FileHandler.logger.log_constraint_error("Constraint Error", f"Duplicate account number: {account_num}")
+                continue
+
+            account_nums.add(account_num)
             formatted_accounts.append(formatted_account)
 
         # Sort by bank account number (first 5 digits)
@@ -91,7 +102,7 @@ class FileHandler:
         for account in accounts:
             parts = account.split('_')
             if len(parts) != 5:
-                print(f"Skipping invalid account (wrong format): {account}")
+                FileHandler.logger.log_error("Write Error", f"Invalid account format: {account}", file_path)
                 continue
             try:
                 current_accounts.append({
@@ -101,7 +112,7 @@ class FileHandler:
                     'balance': float(parts[3])  # assumes it's like "00110.00"
                 })
             except ValueError:
-                print(f"Skipping invalid account (bad balance): {account}")
+                FileHandler.logger.log_constraint_error("Constraint Error", f"Invalid balance: {account}")
                 continue
 
         write_new_current_accounts(current_accounts, file_path)
