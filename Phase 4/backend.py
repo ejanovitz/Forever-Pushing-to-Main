@@ -4,15 +4,15 @@ from transaction_processor import TransactionProcessor
 
 # helper to convert dict to underscore account line
 def convert_dict_to_account_line(acc):
-    account_number = acc['account_number'].zfill(5)  # 5 characters, zero-padded
-    name = acc['name'].upper().ljust(20)[:20]        # 20 characters, left-justified
-    status = acc['status']                           # 1 character
-    balance = f"{acc['balance']:08.2f}"              # 8 characters, zero-padded float
-    txn_count = str(acc['total_transactions']).zfill(4)  # 4 characters
-    unused = "0000"                                   # 4 characters unused
+    account_number = acc['account_number'].zfill(5)
+    name = acc['name'].upper().ljust(20)[:20]
+    status = acc['status'].rjust(2)
+    balance = f"{acc['balance']:08.2f}"
+    txn_count = str(acc['total_transactions']).zfill(4)
+    unused = '0000'
 
-    # Final line must be 42 characters long
-    return f"{account_number}{name}{status}{balance}{txn_count}{unused}"
+    line = f"{account_number}{name}{status}{balance}{txn_count}{unused}"
+    return line
 def main():
     # Populate transactions array
     FileHandler.read_transactions("merged_transactions.txt")
@@ -59,18 +59,23 @@ def main():
     daily_transaction_cost = TransactionProcessor.daily_cost_per_plan("merged_transactions.txt")
     print("\nTotal Daily Transaction Cost:", daily_transaction_cost)
 
-    formatted_accounts = [convert_dict_to_account_line(acc) for acc in updated_accounts]
+    #formatted_accounts = [convert_dict_to_account_line(acc) for acc in updated_accounts]
     # Write new master accounts file
-    FileHandler.write_new_bank_account_file(formatted_accounts, "new_master_file.txt")
+    FileHandler.write_new_bank_account_file(updated_accounts, "new_master_file.txt")
     # Write new current accounts file
-    FileHandler.write_current_accounts_file(formatted_accounts, "new_current_file.txt")
+    FileHandler.write_current_accounts_file(updated_accounts, "new_current_file.txt")
 
 def parse_transaction(transaction):
-    transaction_type = transaction[:2].strip()
-    name = transaction[3:24].strip()
-    account_number = transaction[25:30].strip()
-    amount = float(transaction[31:37].strip()) / 100  # Convert cents to dollars
-    status = transaction[41:].strip()
+    transaction_type = transaction[0:2].strip()
+    name = transaction[3:23].strip()
+    account_number = transaction[23:28].strip().zfill(5)
+    amount_str = transaction[29:37].strip()  # Convert cents to dollars
+    status = transaction[38:40].strip()
+
+    try:
+        amount = float(amount_str)
+    except ValueError:
+        amount = 0.0
     return transaction_type, name, account_number, amount, status
 
 

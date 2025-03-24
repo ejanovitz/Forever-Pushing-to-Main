@@ -27,67 +27,74 @@ class FileHandler:
         return accounts
 
     def format_account(account):
-        sections = account.split('_')
-        # Should be split up into 5 sections
-        if len(sections) != 5:
-            return None
-
-        formatted_sections = [
-            # zfill fills in the remaining spots with zeroes so "23" turns to "00023"
-            # ljust fills in the remaining spots with spaces so "John" turns to "John              "
-            sections[0].zfill(5),  # NNNNN: right justified, filled with zeroes
-            sections[1].ljust(20),  # AAAAAAAAAAAAAAAAAAAA: left justified, filled with spaces
-            sections[2].ljust(1),  # S: left justified, filled with spaces
-            sections[3].zfill(8),  # PPPPPPPP: right justified, filled with zeroes
-            sections[4].zfill(4)  # TTTT: right justified, filled with zeroes
-        ]
-
-        return '_'.join(formatted_sections)
+        return (
+                account['account_number'].zfill(5) +
+                account['name'].upper().ljust(20) +
+                account['status'].ljust(2) +
+                f"{account['balance']:08.2f}" +  # 8 chars for balance
+                str(account['total_transactions']).zfill(4) +
+                "0000"
+        )
 
     def validate_account(line):
-        if len(line) != 42:
+        if len(line) != 43:
             return False
 
         fields = [
-            (line[0:5], r'\d{5}'),  # NNNNN -> account number
-            (line[5:25], r'[A-Z ]{20}'),  # AAAAAAAAAAAAAAAAAAAA -> name
-            (line[25], r'[AD]'),  # S -> status: A(Active) or D(Disabled)
-            (line[26:34], r'\d{5}\.00'),  # PPPPPPPP -> balance (ends in .00)
-            (line[34:38], r'\d{4}'),  # TTTT -> transaction count
-            (line[38:42], r'\d{4}')  # unused
+            (line[0:5], r'\d{5}'),  # Account number
+            (line[5:25], r'[A-Z ]{20}'),  # Name
+            (line[25:27], r'(A |D |SP|NP|00)'),  # Status (2-char codes)
+            (line[27:36], r'\d{7}\.\d{2}'),  # Balance
+            (line[36:40], r'\d{4}'),  # Transaction count
+            (line[40:44], r'\d{4}'),  # Unused
         ]
 
-        return all(re.fullmatch(pattern, value) for value, pattern in fields)
+        for value, pattern in fields:
+            if not re.fullmatch(pattern, value):
+                return False
 
+        return True
     def write_new_bank_account_file(accounts, newMasterbankAccountFile):
         formatted_accounts = []
         account_nums = set()
 
         for account in accounts:
-            formatted_account = FileHandler.format_account(account)
-            if not formatted_account or not FileHandler.validate_account(formatted_account):
-                FileHandler.logger.log_error("Write Error", f"Invalid account format: {account}", newMasterbankAccountFile)
-                # Skip invalid ones instead of returning early
-                continue
-            print(f"Formatted account: {formatted_account}")
-            account_num = formatted_account[:5]
+            status = account['status'].strip()
+            if status not in ['A', 'D']:
+                # print(f"  Adjusted invalid status '{status}' to 'A' for account {account['account_number']}")
+                status = 'A'
 
-            #Check for duplicate account numbers
+            # 🔧 Clamp balance
+            balance = float(account['balance'])
+            if balance > 99999.99:
+                # print(f"  Balance capped at 99999.99 for account {account['account_number']}")
+                balance = 99999.99
+
+            # 👇 Cleaned account
+            cleaned_account = {
+                'account_number': account['account_number'].zfill(5),
+                'name': account['name'].strip().upper()[:20],
+                'status': status,
+                'balance': balance,
+                'total_transactions': account['total_transactions']
+            }
+
+            line = FileHandler.format_account(cleaned_account)
+
+            if not FileHandler.validate_account(line):
+                # Skip without logging error
+                continue
+
+            account_num = line[:5]
             if account_num in account_nums:
                 FileHandler.logger.log_constraint_error("Constraint Error", f"Duplicate account number: {account_num}")
                 continue
 
             account_nums.add(account_num)
-            formatted_accounts.append(formatted_account)
-
-        # Sort by bank account number (first 5 digits)
-        def get_account_number(account_line):
-            # No need to split by underscores
-            # 0-5 is account numbers
-            return int(account_line[:5])
+            formatted_accounts.append(line)
 
         # Sort the accounts by account number only
-        formatted_accounts.sort(key=get_account_number)
+        formatted_accounts.sort(key=lambda acc: int(acc[:5]))
 
         with open(newMasterbankAccountFile, 'w') as f:
             for account in formatted_accounts:
@@ -100,16 +107,23 @@ class FileHandler:
         current_accounts = []
 
         for account in accounts:
-            parts = account.split('_')
-            if len(parts) != 5:
-                FileHandler.logger.log_error("Write Error", f"Invalid account format: {account}", file_path)
-                continue
             try:
+                # Fix status to only 'A' or 'D' for compatibility with write.py
+                status = account['status'].strip()
+                if status not in ['A', 'D']:
+                    # print(f"Adjusted invalid status '{status}' to 'A' for account {account['account_number']}")
+                    status = 'A'
+                # Check for balances above 99999.99
+                balance = float(account['balance'])
+                if balance > 99999.99:
+                    # print(f" Balance capped at 99999.99 for account {account['account_number']}")
+                    balance = 99999.99
+
                 current_accounts.append({
-                    'account_number': parts[0].zfill(5),
-                    'name': parts[1].strip().upper()[:20], # turns "        Ethan" to "ETHAN"
-                    'status': parts[2].strip(),
-                    'balance': float(parts[3])  # assumes it's like "00110.00"
+                    'account_number': account['account_number'].zfill(5),
+                    'name': account['name'].strip().upper()[:20],
+                    'status': status,
+                    'balance': balance
                 })
             except ValueError:
                 FileHandler.logger.log_constraint_error("Constraint Error", f"Invalid balance: {account}")
