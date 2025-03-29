@@ -1,5 +1,6 @@
 import pytest
 import os
+import re
 from transaction_processor import TransactionProcessor  # Adjust import as needed
 
 
@@ -24,7 +25,9 @@ def test_daily_cost_empty_file(create_test_file):
     # Create an empty file
     test_file = create_test_file("empty_file.txt", [])
 
-    result = TransactionProcessor.daily_cost_per_plan(test_file)
+    tp = TransactionProcessor()
+
+    result = tp.daily_cost_per_plan(test_file)
     assert result == {'SP': 0.0, 'NP': 0.0}, "Expected empty file to produce zero costs"
 
 
@@ -36,7 +39,9 @@ def test_daily_cost_sp_only(create_test_file):
     lines = ["Acct00001 SP", "Acct00002 SP", "OtherStuff SP"]
     test_file = create_test_file("sp_file.txt", lines)
 
-    result = TransactionProcessor.daily_cost_per_plan(test_file)
+    tp = TransactionProcessor()
+
+    result = tp.daily_cost_per_plan(test_file)
     # 3 lines each adds $0.05 to SP
     assert result["SP"] == 0.15
     assert result["NP"] == 0.0
@@ -50,7 +55,9 @@ def test_daily_cost_np_only(create_test_file):
     lines = ["Acct10001 NP", "Acct10002 NP"]
     test_file = create_test_file("np_file.txt", lines)
 
-    result = TransactionProcessor.daily_cost_per_plan(test_file)
+    tp = TransactionProcessor()
+
+    result = tp.daily_cost_per_plan(test_file)
     # 2 lines each adds $0.10 to NP
     assert result["SP"] == 0.0
     assert result["NP"] == 0.20
@@ -69,33 +76,50 @@ def test_daily_cost_mixed_plans(create_test_file):
     ]
     test_file = create_test_file("mixed_file.txt", lines)
 
-    result = TransactionProcessor.daily_cost_per_plan(test_file)
+    tp = TransactionProcessor()
+
+    result = tp.daily_cost_per_plan(test_file)
     # SP lines: 2 => 2 * 0.05 = 0.10
     # NP lines: 1 => 1 * 0.10 = 0.10
     assert result["SP"] == 0.10
     assert result["NP"] == 0.10
 
 
-def test_daily_cost_file_not_found():
+def test_daily_cost_file_not_found(capsys):
     """
     Tests FileNotFoundError path by passing a filename that doesn't exist.
     This should trigger the FileNotFoundError exception block.
     """
     fake_file = "no_such_file.txt"
-    result = TransactionProcessor.daily_cost_per_plan(fake_file)
-    # The function returns the dictionary even if file not found,
-    # but it logs the error. We check the default dictionary is returned.
-    assert result == {'SP': 0.0, 'NP': 0.0}, "Expected empty dict if file not found"
+    tp = TransactionProcessor()
+
+    # For this, we can assume it crashes the program. So, we call pytest.raises
+    with pytest.raises(SystemExit):
+        result = tp.daily_cost_per_plan(fake_file)
+
+    # Here, we have to capture the output and compare.
+    captured = capsys.readouterr()
+    expected_output = "ERROR: File Error: Transaction file not found in file: no_such_file.txt"
+    assert expected_output in captured.out
 
 
-def test_daily_cost_general_exception(tmp_path):
+def test_daily_cost_general_exception(tmp_path, capsys):
     """
     Tests the generic exception block by passing a directory instead of a file path.
     On some systems, attempting to open a directory throws IsADirectoryError,
     which is caught by the general exception handler.
     """
     dir_path = tmp_path  # This is a directory
-    result = TransactionProcessor.daily_cost_per_plan(str(dir_path))
+    tp = TransactionProcessor()
 
-    # Should have caught the exception and returned default dict
-    assert result == {'SP': 0.0, 'NP': 0.0}, "Expected empty dict if a general exception occurs"
+    # For this, we can assume it crashes the program. So, we call pytest.raises
+    with pytest.raises(SystemExit):
+        result = tp.daily_cost_per_plan(str(dir_path))
+
+    # Capture the output for this
+    captured = capsys.readouterr()
+
+    #Compares regex of expected pattern vs output
+    expected_pattern = re.compile(
+        r"ERROR: Processing Error: .+ in file: " + re.escape(str(dir_path)))
+    assert expected_pattern.search(captured.out)
