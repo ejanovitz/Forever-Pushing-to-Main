@@ -36,3 +36,4 @@ class TransactionProcessor:
         
         file.close()
         return transaction_dict
+
