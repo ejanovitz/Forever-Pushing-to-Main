@@ -89,6 +89,15 @@ def test_invalid_plan_type_throws_error(capsys):
     assert "ERROR: Fatal error - Line 1: Invalid plan type 'XX'. Must be SP or NP" in captured.out  # Check error message
     assert len(accounts) == 0
 
+def test_invalid_transaction_non_digit_throws_error(capsys):
+    content = "12345 Macy May             A 01234.56 -123 SP\n"  # Non-digit transaction (Covers negative)
+    file_path = write_temp_file(content)
+    accounts = read_old_bank_accounts(file_path)
+    os.remove(file_path)
+    captured = capsys.readouterr()
+    assert "ERROR: Fatal error - Line 1: Transaction count must be 4 digits" in captured.out
+    assert len(accounts) == 0
+
 # Loop coverage: enter multiple times
 def test_multiple_valid_and_invalid_lines_reads_successfully_and_throws_errors(capsys):
     content = (
