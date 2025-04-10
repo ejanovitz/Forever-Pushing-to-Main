@@ -1,0 +1,10 @@
+login
+standard
+Andrew
+deposit
+23456
+200.00
+withdrawal
+65432
+100.00
+logout

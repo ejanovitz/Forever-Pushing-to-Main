@@ -1,0 +1,6 @@
+login
+admin
+disable
+Firstname Lastname
+12345
+logout

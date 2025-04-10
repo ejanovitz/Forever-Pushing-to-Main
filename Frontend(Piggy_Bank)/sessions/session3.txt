@@ -1,0 +1,14 @@
+login
+standard
+Bob
+paybill
+67890
+CQ
+123.45
+Y
+transfer
+67890
+65432
+321.00
+Y
+logout

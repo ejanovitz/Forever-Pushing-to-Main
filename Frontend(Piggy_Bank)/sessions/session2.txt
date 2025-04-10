@@ -1,0 +1,9 @@
+login
+admin
+paybill
+Bob
+67890
+CQ
+500.00
+Y
+logout
