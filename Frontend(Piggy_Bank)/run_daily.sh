@@ -41,4 +41,4 @@ done
 cat daily_output/*.etf > merged_transactions.txt
 echo "Merged daily transaction files into merged_transactions.txt"
 
-echo "✅ Daily run complete."
+echo "Daily run complete."
