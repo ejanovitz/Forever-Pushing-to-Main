@@ -42,7 +42,7 @@ cat daily_output/*.etf > merged_transactions.txt
 echo "Merged daily transaction files into merged_transactions.txt"
 
 # Move to the Backend directory and run the backend file.
-cd ../Backend && python3 ../Backend/backend.py
+cd ../Backend && python3 backend.py
 sleep 1
 
 #Change frontend bank accounts to the new one

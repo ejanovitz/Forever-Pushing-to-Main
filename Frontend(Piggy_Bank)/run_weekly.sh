@@ -48,7 +48,7 @@ for i in {1..7}; do
     echo "Merged daily transaction files into merged_transactions.txt"
 
     # Move to the Backend directory and run the backend file.
-    cd ../Backend && python3 ../Backend/backend.py
+    cd ../Backend && python3 backend.py
     sleep 1
 
     #Change frontend bank accounts to the new one
@@ -58,7 +58,7 @@ for i in {1..7}; do
     # Move back to the Frontend directory.
     cd ../'Frontend(Piggy_Bank)'
 
-    echo "Daily run complete."
+    echo "Daily run complete./n"
 done
 
 echo "Weekly run complete."
