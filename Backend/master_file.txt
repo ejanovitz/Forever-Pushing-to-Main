@@ -1,9 +1,0 @@
-23456 Andrew               A 00300.00 1000
-65432 Andrew               A 07000.00 1000
-67890 Bob                  A 55555.00 1000
-02468 Billy                D 07823.54 1000
-00002 Billy                A 02345.89 1000
-12345 Firstname Lastname   A 99999.99 1000
-78901 Steve Steve          D 00000.00 1000
-22222 Broke Boy            A 00450.00 1000
-00000 END OF FILE          A 00000.00 0000

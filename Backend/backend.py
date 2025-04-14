@@ -15,7 +15,7 @@ def convert_dict_to_account_line(acc):
     return line
 def main():
     # Populate transactions array
-    FileHandler.read_transactions("merged_transactions.txt")
+    FileHandler.read_transactions("../Frontend(Piggy_Bank)/merged_transactions.txt")
     # Populate accounts array
     FileHandler.read_old_bank_account_file("master_file.txt")
 
@@ -56,12 +56,14 @@ def main():
     for acc in updated_accounts:
         print(acc)
 
-    daily_transaction_cost = TransactionProcessor.daily_cost_per_plan("merged_transactions.txt")
+    processor = TransactionProcessor()
+
+    daily_transaction_cost = processor.daily_cost_per_plan("../Frontend(Piggy_Bank)/merged_transactions.txt")
     print("\nTotal Daily Transaction Cost:", daily_transaction_cost)
 
     #formatted_accounts = [convert_dict_to_account_line(acc) for acc in updated_accounts]
     # Write new master accounts file
-    FileHandler.write_new_bank_account_file(updated_accounts, "new_master_file.txt")
+    FileHandler.write_new_bank_account_file(updated_accounts, "master_file.txt")
     # Write new current accounts file
     FileHandler.write_current_accounts_file(updated_accounts, "new_current_file.txt")
 

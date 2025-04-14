@@ -41,4 +41,12 @@ done
 cat daily_output/*.etf > merged_transactions.txt
 echo "Merged daily transaction files into merged_transactions.txt"
 
+# Move to the Backend directory and run the backend file.
+cd ../Backend && python3 ../Backend/backend.py
+sleep 1
+
+#Change frontend bank accounts to the new one
+cat new_current_file.txt > ../'Frontend(Piggy_Bank)'/current_bank_accounts.txt
+echo "Updated current bank accounts from the Back End."
+
 echo "Daily run complete."
