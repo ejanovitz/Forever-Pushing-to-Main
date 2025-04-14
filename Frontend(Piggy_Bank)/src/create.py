@@ -50,6 +50,9 @@ class Create(PrivilegedTransaction):
 
         if not (0 <= balance <= 99999.99):
             raise BankError('Initial balance must be between $0 and $99999.99')
+        
+        plan_type = input('What is the account type (SP/NP): \n')
+
 
         # Ensure the number isn't one already created this session.
         number = get_unique_account_number(self.session.created_account_number + 1)
@@ -58,7 +61,8 @@ class Create(PrivilegedTransaction):
         print(f'''Account created
 holder: {name}
 account number: {number:05}
-balance: ${balance:.2f}''')
+balance: ${balance:.2f}
+type: {plan_type.upper()}''')
 
         # Log the transaction
-        self.log_raw(self.transaction_num, name, number, balance, '')
+        self.log_raw(self.transaction_num, name, number, balance, plan_type.upper(), '')

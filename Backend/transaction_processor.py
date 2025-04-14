@@ -20,7 +20,7 @@ class TransactionProcessor:
                 for line in file:
                     # Then, we get rid of potential white spaces
                     line = line.strip()
-                    plan = line[-2:]
+                    plan = line[39:41]
 
                     # Calculations
                     if plan == 'SP':

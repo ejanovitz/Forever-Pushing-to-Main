@@ -29,7 +29,8 @@ class BankUI:
             'number': int(line[0:5]),  # Account number (columns 0-5)
             'name': line[6:26].strip(),  # Account holder name (columns 6-26)
             'balance': float(line[29:37]),  # Account balance (columns 29-37)
-            'disabled': line[27] == 'D'  # Disabled status (column 27)
+            'disabled': line[27] == 'D',  # Disabled status (column 27)
+            'is_student': line[38:40] == 'SP'  # Account type (column 38)
         }
 
     def get_account_holder(self, name: str):
@@ -67,7 +68,7 @@ class BankUI:
                             account_number=account_data['number'],
                             balance=account_data['balance'],
                             disabled=account_data['disabled'],
-                            is_student=False
+                            is_student=account_data['is_student']
                         )
                         holder.accounts.append(account)
                     

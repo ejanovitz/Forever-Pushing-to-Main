@@ -57,4 +57,4 @@ class Delete(PrivilegedTransaction):
     # Log the transaction
     def log(self, account, amount=0, tags=None):
         self.session.transaction_logs.append(f"0{self.transaction_num} {account.account_holder.name}\
-{' ' * (20 - len(account.account_holder.name))} {account.account_number:05.0f} {amount:08.2f} {tags if tags else '  '}")
+{' ' * (20 - len(account.account_holder.name))} {account.account_number:05.0f} {amount:08.2f} {'SP' if account.is_student else 'NP'} {tags if tags else '  '}")

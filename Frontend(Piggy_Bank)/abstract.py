@@ -77,15 +77,21 @@ class Transaction(ABC):
         pass
     
     # Log the transaction to the transaction logs
-    def log_raw(self, transaction_num: int, account_holder: str, account_number: int, amount: float, tags: str):
-        self.session.transaction_logs.append(f"0{transaction_num} {account_holder:20} {account_number:05} {amount:08.2f} {tags:2}")
+    def log_raw(self, transaction_num: int, account_holder: str, account_number: int, amount: float, plan: str, tags: str):
+        self.session.transaction_logs.append(f"0{transaction_num} {account_holder:20} {account_number:05} {amount:08.2f} {plan:2} {tags:2}")
 
     # Helper method to log the transaction
     def log(self, amount: float, account, tags):
         account_holder = '' if account == None else account.account_holder.name
         account_number = 0 if account == None else account.account_number
+        plan = ''
+        if account != None:
+            if account.is_student:
+                plan = 'SP'
+            else:
+                plan = 'NP'
 
-        self.log_raw(self.transaction_num, account_holder, account_number, amount, tags if tags != None else '')
+        self.log_raw(self.transaction_num, account_holder, account_number, amount, plan, tags if tags != None else '')
 
 # Standard transaction class, used for all
 class StdTransaction(Transaction):

@@ -35,7 +35,7 @@ class Paybill(StdTransaction):
                 account_number=int(account),
                 balance=float(parsed_account[29:37]),
                 disabled=parsed_account[27:28] == 'D',
-                is_student=False
+                is_student=parsed_account[38:40] == 'SP'
             )
 
         else:
@@ -82,4 +82,4 @@ class Paybill(StdTransaction):
     # Log the transaction
     def log(self, amount, account='     ', tags='  '):
         # add to the session's transaction logs
-        self.session.transaction_logs.append(f"0{self.transaction_num} {account.account_holder.name:20} {account.account_number:05} {amount:08.2f} {tags}")
+        self.session.transaction_logs.append(f"0{self.transaction_num} {account.account_holder.name:20} {account.account_number:05} {amount:08.2f} {'SP' if account.is_student else 'NP'} {tags}")

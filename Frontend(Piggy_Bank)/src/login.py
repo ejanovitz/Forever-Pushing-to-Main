@@ -44,12 +44,13 @@ class Login(Transaction):
                     account_number = int(matching_line[0:5])
                     balance = float(matching_line[29:37])
                     disabled = matching_line[27:28] == 'D'
+                    is_student = matching_line[38:40] == 'SP'
                     account = BankAccount(
                         account_holder=holder,
                         account_number=account_number,
                         balance=balance,
                         disabled=disabled,  # Default value
-                        is_student=False  # Default value
+                        is_student=is_student  # Default value
                     )
                     holder.accounts.append(account)
                     self.session = StdSession(holder, self.bank_ui)  # Pass bank_ui here

@@ -75,11 +75,11 @@ class Transfer(StdTransaction):
         """
         # Format the transferer's line
         transferer_name = f"{source_account.account_holder.name:<20}"  # Left-align the name to 20 characters
-        transferer_log = f"0{self.transaction_num} {transferer_name} {source_account.account_number:05} {amount:08.2f} {tags}"
+        transferer_log = f"0{self.transaction_num} {transferer_name} {source_account.account_number:05} {amount:08.2f} {'SP' if source_account.is_student else 'NP'} {tags}"
         
         # Format the transferee's line
         transferee_name = f"{dest_account.account_holder.name:<20}"  # Left-align the name to 20 characters
-        transferee_log = f"   {transferee_name} {dest_account.account_number:05} {amount:08.2f}"
+        transferee_log = f"   {transferee_name} {dest_account.account_number:05} {amount:08.2f} {'SP' if dest_account.is_student else 'NP'}"
         
         # Append both lines to the transaction logs
         self.session.transaction_logs.append(transferer_log)

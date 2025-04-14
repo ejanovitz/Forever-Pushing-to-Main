@@ -63,16 +63,16 @@ def main():
 
     #formatted_accounts = [convert_dict_to_account_line(acc) for acc in updated_accounts]
     # Write new master accounts file
-    FileHandler.write_new_bank_account_file(updated_accounts, "master_file.txt")
+    FileHandler.write_new_bank_account_file(updated_accounts, "new_master_file.txt")
     # Write new current accounts file
     FileHandler.write_current_accounts_file(updated_accounts, "new_current_file.txt")
 
 def parse_transaction(transaction):
     transaction_type = transaction[0:2].strip()
     name = transaction[3:23].strip()
-    account_number = transaction[23:28].strip().zfill(5)
-    amount_str = transaction[29:37].strip()  # Convert cents to dollars
-    status = transaction[38:40].strip()
+    account_number = transaction[24:29].strip().zfill(5)
+    amount_str = transaction[30:38].strip()  # Convert cents to dollars
+    status = transaction[39:41].strip()
 
     try:
         amount = float(amount_str)
