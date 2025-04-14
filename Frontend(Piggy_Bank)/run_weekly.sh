@@ -58,7 +58,7 @@ for i in {1..7}; do
     # Move back to the Frontend directory.
     cd ../'Frontend(Piggy_Bank)'
 
-    echo "Daily run complete./n"
+    echo "Daily run complete."
 done
 
 echo "Weekly run complete."
